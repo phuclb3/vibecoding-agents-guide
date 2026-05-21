@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xây agents automation — Hướng dẫn toàn tập</title>
+<meta name="description" content="Agent là gì, tools, MCP, connectors, chạy theo lịch. Hướng dẫn xây agent tự động hóa với Claude, Antigravity và Google AI Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')})();</script>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="index.html" style="color:inherit">
+      <div class="logo">🚀</div>
+      <div class="title">Vibecoding &amp; AI Agents<span>Hướng dẫn toàn tập</span></div>
+    </a>
+    <nav class="nav">
+      <div class="group-label">Bắt đầu</div>
+      <a href="index.html"><span class="ic">🏠</span> Trang chủ</a>
+      <a href="vibecoding.html"><span class="ic">✨</span> Vibecoding cơ bản</a>
+      <div class="group-label">Đi sâu</div>
+      <a href="agents.html"><span class="ic">🤖</span> Xây agents automation</a>
+      <a href="compare.html"><span class="ic">⚖️</span> So sánh &amp; tích hợp</a>
+      <a href="projects.html"><span class="ic">🛠️</span> Dự án thực hành</a>
+      <div class="group-label">Tra cứu</div>
+      <a href="references.html"><span class="ic">📚</span> Nguồn &amp; tài liệu</a>
+    </nav>
+    <div class="sidebar-footer">
+      <span class="label">Biên soạn</span>
+      PhucLB3 x Claude Cowork x Antigravity
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="topbar">
+      <div class="crumbs"><button class="menu-btn" aria-label="Menu">☰</button> &nbsp; Trang chủ / <b>Xây agents automation</b></div>
+      <span class="badge">Phần 2</span>
+    </div>
+
+    <div class="container">
+      <section class="hero">
+        <span class="eyebrow">Phần 2 · Tự động hóa</span>
+        <h1>Xây dựng agents automation</h1>
+        <p class="lead">Từ "AI trả lời câu hỏi" đến "AI tự làm việc thay bạn": hiểu agent, tools, MCP và cách dựng những trợ lý tự động hóa đầu tiên với Claude, Antigravity và AI Studio.</p>
+      </section>
+
+      <div class="toc">
+        <div class="toc-title">Nội dung trang này</div>
+        <ol>
+          <li><a href="#agent-la-gi">Agent là gì? Khác chatbot ra sao?</a></li>
+          <li><a href="#cau-tao">Cấu tạo của một agent</a></li>
+          <li><a href="#tools">Tools — "đôi tay" của agent</a></li>
+          <li><a href="#mcp">MCP &amp; Connectors — cổng kết nối ra thế giới</a></li>
+          <li><a href="#claude">Xây agent với Claude (Cowork, Code, Skills)</a></li>
+          <li><a href="#antigravity">Xây agent với Google Antigravity</a></li>
+          <li><a href="#aistudio">Tự động hóa với Google AI Studio</a></li>
+          <li><a href="#lich">Chạy theo lịch &amp; chạy nền</a></li>
+          <li><a href="#antoan">An toàn khi cho agent hành động</a></li>
+        </ol>
+      </div>
+
+      <h2 id="agent-la-gi"><span class="num">1</span>Agent là gì? Khác chatbot ra sao?</h2>
+      <p>Một <strong>chatbot</strong> trả lời câu hỏi rồi dừng. Một <strong>agent</strong> (tác tử AI) thì <strong>tự lên kế hoạch, hành động qua nhiều bước, dùng công cụ, kiểm tra kết quả</strong> và lặp lại cho đến khi hoàn thành mục tiêu bạn giao.</p>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <h4>💬 Chatbot</h4>
+          <p>Bạn hỏi: "Tóm tắt email hôm nay." → Nó trả lời <em>nếu bạn đã dán email vào</em>. Nó không tự mở hộp thư.</p>
+        </div>
+        <div class="card">
+          <h4>🤖 Agent</h4>
+          <p>Bạn giao: "Mỗi sáng đọc hộp thư của tôi, tóm tắt các email quan trọng và lưu vào một file." → Agent tự mở Gmail, đọc, lọc, viết file — không cần bạn dán gì cả.</p>
+        </div>
+      </div>
+
+      <div class="callout note">
+        <span class="ic">🧠</span>
+        <div><p><b>Vòng lặp của một agent (rất quan trọng):</b> <b>Nghĩ</b> (lập kế hoạch) → <b>Hành động</b> (gọi một công cụ) → <b>Quan sát</b> (xem kết quả) → lặp lại cho đến khi xong. Đây là điều khiến agent "tự chủ" hơn chatbot.</p></div>
+      </div>
+
+      <figure class="mock">
+        <span class="shot-tag">Sơ đồ · Vòng lặp hoạt động của một agent</span>
+        <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ vòng lặp Nghĩ - Hành động - Quan sát của agent">
+          <defs>
+            <marker id="ah" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6ea8fe"/></marker>
+          </defs>
+          <!-- goal -->
+          <rect x="40" y="125" width="120" height="50" rx="10" fill="#1c2533" stroke="#b794f6"/>
+          <text x="100" y="148" text-anchor="middle" fill="#b794f6" font-family="sans-serif" font-size="12" font-weight="700">🎯 Mục tiêu</text>
+          <text x="100" y="165" text-anchor="middle" fill="#aab6c6" font-family="sans-serif" font-size="10">bạn giao việc</text>
+          <path d="M162,150 L208,150" stroke="#6ea8fe" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+          <!-- 3 nodes in a cycle -->
+          <circle cx="320" cy="80" r="52" fill="#131c28" stroke="#6ea8fe" stroke-width="2"/>
+          <text x="320" y="76" text-anchor="middle" fill="#6ea8fe" font-family="sans-serif" font-size="14" font-weight="800">① Nghĩ</text>
+          <text x="320" y="95" text-anchor="middle" fill="#aab6c6" font-family="sans-serif" font-size="10">lập kế hoạch</text>
+          <circle cx="470" cy="200" r="52" fill="#131c28" stroke="#56d364" stroke-width="2"/>
+          <text x="470" y="196" text-anchor="middle" fill="#56d364" font-family="sans-serif" font-size="14" font-weight="800">② Hành động</text>
+          <text x="470" y="215" text-anchor="middle" fill="#aab6c6" font-family="sans-serif" font-size="10">gọi công cụ</text>
+          <circle cx="200" cy="200" r="52" fill="#131c28" stroke="#f0b429" stroke-width="2"/>
+          <text x="200" y="196" text-anchor="middle" fill="#f0b429" font-family="sans-serif" font-size="14" font-weight="800">③ Quan sát</text>
+          <text x="200" y="215" text-anchor="middle" fill="#aab6c6" font-family="sans-serif" font-size="10">xem kết quả</text>
+          <!-- cycle arrows -->
+          <path d="M362,108 A95,95 0 0 1 432,168" stroke="#6ea8fe" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+          <path d="M418,222 A95,95 0 0 1 252,222" stroke="#6ea8fe" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+          <path d="M208,148 A95,95 0 0 1 278,108" stroke="#6ea8fe" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+          <text x="335" y="250" text-anchor="middle" fill="#7d8aa0" font-family="sans-serif" font-size="11">↻ lặp lại đến khi đạt mục tiêu</text>
+          <!-- done -->
+          <path d="M522,200 L575,200" stroke="#56d364" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+          <rect x="578" y="175" width="140" height="50" rx="10" fill="#1c2533" stroke="#56d364"/>
+          <text x="648" y="198" text-anchor="middle" fill="#56d364" font-family="sans-serif" font-size="12" font-weight="700">✓ Hoàn thành</text>
+          <text x="648" y="215" text-anchor="middle" fill="#aab6c6" font-family="sans-serif" font-size="10">trả kết quả cho bạn</text>
+        </svg>
+        <figcaption>Khác với chatbot (hỏi–đáp rồi dừng), <b>agent lặp vòng Nghĩ → Hành động → Quan sát</b> nhiều lần, tự dùng công cụ cho tới khi xong việc.</figcaption>
+      </figure>
+
+      <h2 id="cau-tao"><span class="num">2</span>Cấu tạo của một agent</h2>
+      <p>Dù xây bằng công cụ nào, một agent thường gồm bốn thành phần. Hiểu bốn thứ này là bạn hiểu mọi nền tảng.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Thành phần</th><th>Vai trò</th><th>Ví dụ đời thường</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Bộ não (model)</strong></td><td>Suy luận, lập kế hoạch, quyết định bước tiếp theo.</td><td>Claude Opus, Gemini 3 Pro.</td></tr>
+            <tr><td><strong>Hướng dẫn (instructions)</strong></td><td>Mô tả mục tiêu, nguyên tắc, giới hạn của agent.</td><td>"Bạn là trợ lý sắp xếp file, luôn hỏi trước khi xóa."</td></tr>
+            <tr><td><strong>Công cụ (tools)</strong></td><td>Những hành động agent được phép làm.</td><td>Đọc file, gửi email, mở trình duyệt.</td></tr>
+            <tr><td><strong>Bộ nhớ (memory/context)</strong></td><td>Lưu thông tin để không "quên" giữa các bước.</td><td>Ghi nhớ bạn thích báo cáo dạng bảng.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="tools"><span class="num">3</span>Tools — "đôi tay" của agent</h2>
+      <p>Nếu model là bộ não thì <strong>tools (công cụ)</strong> là đôi tay. Không có tools, agent chỉ biết nói. Có tools, agent mới <em>làm</em> được việc trong thế giới thật. Một số tools phổ biến:</p>
+      <ul>
+        <li><strong>Đọc/ghi file:</strong> mở tài liệu, tạo báo cáo, sắp xếp thư mục trên máy bạn.</li>
+        <li><strong>Chạy lệnh / chạy code:</strong> thực thi tính toán, xử lý dữ liệu, kiểm thử phần mềm.</li>
+        <li><strong>Duyệt web:</strong> mở trang, đọc nội dung, điền biểu mẫu, chụp ảnh màn hình.</li>
+        <li><strong>Kết nối ứng dụng:</strong> Gmail, Google Drive, Slack, Notion, lịch… (qua MCP/Connectors).</li>
+      </ul>
+
+      <div class="callout tip">
+        <span class="ic">🔑</span>
+        <div><p><b>Nguyên tắc quyền tối thiểu:</b> Chỉ cấp cho agent đúng những công cụ nó cần cho việc đó. Một agent viết báo cáo không cần quyền xóa file. Càng ít quyền, càng an toàn.</p></div>
+      </div>
+
+      <h2 id="mcp"><span class="num">4</span>MCP &amp; Connectors — cổng kết nối ra thế giới</h2>
+      <p><strong>MCP (Model Context Protocol)</strong> là một <em>chuẩn kết nối chung</em> do Anthropic giới thiệu, giúp agent dùng được công cụ và dữ liệu bên ngoài một cách thống nhất. Hãy hình dung MCP như <strong>cổng USB-C của thế giới AI</strong>: thay vì mỗi ứng dụng một kiểu cắm, giờ có một chuẩn duy nhất để cắm mọi thứ vào agent.</p>
+
+      <div class="callout note">
+        <span class="ic">🔌</span>
+        <div><p><b>MCP server vs Connector:</b> "MCP server" là phần mềm cung cấp một bộ công cụ (ví dụ: bộ công cụ thao tác với Gmail). "Connector" thường là cách gọi thân thiện cho các kết nối sẵn có mà bạn chỉ cần bấm "bật". Claude hiện kết nối được với hơn <b>50 công cụ</b> qua connectors (Slack, Gmail, Google Drive, Notion…).</p></div>
+      </div>
+
+      <h3>Vì sao MCP quan trọng với người mới?</h3>
+      <p>Trước MCP, để agent nói chuyện với Gmail bạn phải tự viết code kết nối phức tạp. Với MCP, bạn chỉ cần "cắm" một MCP server có sẵn là agent dùng được ngay. Hệ sinh thái MCP đang phát triển nhanh: có cả một <em>registry</em> (kho) các MCP server để bạn tìm và bật theo nhu cầu.</p>
+
+      <h2 id="claude"><span class="num">5</span>Xây agent với Claude</h2>
+      <p>Claude (của Anthropic) cung cấp nhiều cách xây agent, từ dễ đến chuyên sâu. Người mới nên bắt đầu với <strong>Claude Cowork</strong>.</p>
+
+      <h3>① Claude Cowork — dễ nhất cho người không lập trình</h3>
+      <p><strong>Claude Cowork</strong> là một trợ lý AI chạy trên máy tính của bạn (macOS &amp; Windows). Bạn giao một mục tiêu, Cowork tự làm việc với <em>file, ứng dụng và trình duyệt</em> để trả về kết quả hoàn chỉnh. Cowork đã phát hành chính thức (rời khỏi giai đoạn xem trước) từ <strong>tháng 4/2026</strong>.</p>
+      <figure class="shot">
+        <span class="shot-tag">Mockup giao diện · Claude Cowork</span>
+        <img loading="lazy" src="images/claude_cowork_demo.png" alt="Giao diện Claude Cowork tự động hóa công việc">
+        <figcaption>
+          Mockup giao diện **Claude Cowork**: Trợ lý AI tự động hóa công việc văn phòng, sắp xếp tệp tin và chạy các tác vụ lặp lại theo lịch hẹn trên máy tính của bạn.
+        </figcaption>
+      </figure>
+
+      <div class="callout note">
+        <span class="ic">🖼️</span>
+        <div><p><b>Xem giao diện thật:</b> Trang sản phẩm chính thức <a href="https://www.anthropic.com/product/claude-cowork" target="_blank" rel="noopener">Claude Cowork</a> có video demo giao diện thực tế; hướng dẫn cài đặt &amp; sử dụng ở <a href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank" rel="noopener">Claude Help Center</a>.</p></div>
+      </div>
+
+      <p>Những việc Cowork làm tốt cho người mới:</p>
+      <ul>
+        <li><strong>Dọn dẹp file:</strong> "Sắp xếp thư mục Downloads của tôi theo loại, xóa thứ cũ hơn 30 ngày."</li>
+        <li><strong>Báo cáo định kỳ:</strong> "Xử lý các ảnh hóa đơn trong thư mục /receipts, tạo bảng tính phân loại chi tiêu."</li>
+        <li><strong>Chuẩn bị họp:</strong> "Xem lịch ngày mai và soạn tài liệu tóm tắt cho từng cuộc họp."</li>
+        <li><strong>Quy trình liên ứng dụng:</strong> phân tích dữ liệu trong Excel rồi tự dựng slide PowerPoint từ kết quả đó.</li>
+      </ul>
+
+      <div class="callout tip">
+        <span class="ic">🧩</span>
+        <div><p><b>Skills &amp; Plugins:</b> Cowork có "thư viện kỹ năng" (Skills Directory) với hơn <b>1.000 skill</b> dựng sẵn — sao chép vào là dùng được, từ tổ chức file đến viết email, làm báo cáo tuần. <b>Plugins</b> là gói lớn hơn, đóng gói nhiều skill + connector + lệnh tắt + sub-agent cho một công việc cụ thể. Đây chính là cơ chế tài liệu này được tạo ra (qua các skill như tạo HTML/báo cáo).</p></div>
+      </div>
+
+      <h3>② Claude Code — cho ai muốn đi sâu hơn</h3>
+      <p><strong>Claude Code</strong> là công cụ dòng lệnh để lập trình cùng Claude, đã tiến hóa thành một "tầng điều phối" (orchestration layer) cho cả đội agent. Bốn khái niệm chính:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Khái niệm</th><th>Ý nghĩa</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Subagents</strong></td><td>Các "trợ lý con" chuyên biệt (review code, chạy test, kiểm bảo mật), mỗi cái có bộ nhớ và quyền riêng. Một agent chính điều phối chúng.</td></tr>
+            <tr><td><strong>MCP</strong></td><td>Kết nối Claude Code với hệ thống ngoài: cơ sở dữ liệu, trình theo dõi lỗi, công cụ thiết kế, trình duyệt…</td></tr>
+            <tr><td><strong>Hooks</strong></td><td>Quy tắc tự động kích hoạt theo sự kiện: chạy test trước khi dừng, chặn sửa file tự sinh, lint trước khi commit.</td></tr>
+            <tr><td><strong>Skills &amp; Plugins</strong></td><td>Đóng gói hướng dẫn, công cụ và quy trình để tái sử dụng và chia sẻ.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>③ Claude Agent SDK — cho lập trình viên xây agent riêng</h3>
+      <p>Khi bạn muốn nhúng một agent vào sản phẩm của mình, <strong>Claude Agent SDK</strong> cung cấp bộ công cụ lập trình để tự xây dựng agent với vòng lặp nghĩ–hành động–quan sát, quản lý công cụ và bộ nhớ. Phần này dành cho người đã quen lập trình; người mới có thể bỏ qua lúc đầu.</p>
+
+      <h2 id="antigravity"><span class="num">6</span>Xây agent với Google Antigravity</h2>
+      <p><strong>Google Antigravity</strong> (ra mắt 20/11/2025) là một <em>nền tảng phát triển agentic</em> — không chỉ là trình soạn code mà là cả "phòng làm việc" nơi bạn giao việc cho các agent tự lên kế hoạch, viết code, chạy thử trên trình duyệt và <em>báo cáo lại</em>. Nó hoạt động trên macOS, Windows, Linux và <strong>miễn phí trong giai đoạn xem trước</strong>.</p>
+
+      <figure class="shot">
+        <span class="shot-tag">Mockup giao diện · Google Antigravity</span>
+        <img loading="lazy" src="images/antigravity_demo.png" alt="Giao diện Google Antigravity Manager Surface và Artifacts">
+        <figcaption>
+          Mockup giao diện **Google Antigravity**: Bảng điều khiển Agent Manager hiển thị các tác tử AI hoạt động song song trong chế độ chạy nền (background), theo dõi tiến độ và các Artifacts trực quan.
+        </figcaption>
+      </figure>
+
+      <figure class="shot">
+        <span class="shot-tag real">Ảnh giao diện thật · nguồn chính thức của Google</span>
+        <img loading="lazy" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/editor-open-agent-manager.original.png" alt="Ảnh chụp giao diện thật của Google Antigravity: vùng Editor bên trái và bảng Agent bên phải">
+        <figcaption>
+          Giao diện thật của Antigravity: bên trái là <b>Editor</b> (với phím tắt Switch to Agent Manager ⌘E, Code with Agent ⌘L), bên phải là <b>bảng Agent</b> với ô "Ask anything", chế độ <b>Planning</b> và model <b>Gemini 3 Pro</b>.
+          <br>Ảnh: <a href="https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/" target="_blank" rel="noopener">Google Developers Blog</a>. <span style="opacity:.7">Cần kết nối internet để hiển thị ảnh này.</span>
+        </figcaption>
+      </figure>
+
+      <h3>Hai chế độ làm việc</h3>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4>✍️ Editor View</h4>
+          <p>Giao diện soạn code quen thuộc có AI hỗ trợ (gợi ý gõ, lệnh inline). Dùng khi bạn muốn trực tiếp tham gia, làm việc đồng bộ với AI.</p>
+        </div>
+        <div class="card">
+          <h4>🎛️ Manager Surface</h4>
+          <p>"Bảng điều khiển" để bạn <em>khởi tạo, điều phối và quan sát nhiều agent</em> chạy song song trên các workspace khác nhau — kể cả khi bạn đang làm việc khác.</p>
+        </div>
+      </div>
+
+      <h3>Artifacts — "bằng chứng công việc" thay vì log khó hiểu</h3>
+      <p>Điểm hay nhất của Antigravity cho người mới: thay vì bắt bạn đọc nhật ký kỹ thuật rối rắm, agent tạo ra <strong>Artifacts</strong> — những sản phẩm dễ hiểu như <em>danh sách việc, kế hoạch thực hiện, ảnh chụp màn hình, video ghi lại thao tác trên trình duyệt</em>. Bạn liếc qua là biết agent làm gì. Nếu thấy sai, bạn để lại nhận xét ngay trên Artifact (như comment vào tài liệu) và agent tự tiếp thu mà không cần dừng lại.</p>
+
+      <div class="callout note">
+        <span class="ic">🌐</span>
+        <div><p><b>Tự kiểm thử trên trình duyệt:</b> Antigravity cài một tiện ích Chrome riêng cho agent, cho phép nó tự mở cửa sổ, cuộn, gõ, bấm và đọc log. Nhờ vậy agent có thể <em>tự kiểm tra</em> tính năng vừa viết có chạy đúng không — một việc trước đây phải làm thủ công.</p></div>
+      </div>
+
+      <h3>Lựa chọn model</h3>
+      <p>Antigravity cho chọn nhiều "bộ não": <strong>Gemini 3 Pro</strong> (với hạn mức rộng rãi), và hỗ trợ đầy đủ <strong>Anthropic Claude Sonnet 4.5</strong> cùng <strong>OpenAI GPT-OSS</strong>. Bạn có thể chọn model phù hợp cho từng tác vụ ngay trong cùng một công cụ.</p>
+
+      <h3>Bắt đầu với Antigravity (3 bước)</h3>
+      <ol class="steps">
+        <li><span class="st-title">Tải về &amp; cài đặt</span> Vào <code>antigravity.google/download</code>, chọn hệ điều hành (macOS/Windows/Linux), cài như một ứng dụng thông thường. Đăng nhập bằng tài khoản Google.</li>
+        <li><span class="st-title">Mô tả việc cần làm</span> Trong Manager Surface, giao một nhiệm vụ end-to-end, ví dụ: "Tạo trang web danh sách việc cần làm, tự chạy thử và chụp màn hình cho tôi xem."</li>
+        <li><span class="st-title">Duyệt Artifacts &amp; phản hồi</span> Xem kế hoạch và ảnh chụp agent tạo ra. Để lại nhận xét nếu cần chỉnh. Agent tiếp tục cho đến khi đạt yêu cầu.</li>
+      </ol>
+
+      <h2 id="aistudio"><span class="num">7</span>Tự động hóa với Google AI Studio</h2>
+      <p><strong>Google AI Studio</strong> nghiêng về <em>tạo nhanh ứng dụng</em> hơn là agent chạy nền, nhưng vẫn rất hữu ích trong bức tranh tự động hóa. Ở chế độ <strong>Build mode</strong>, bạn mô tả ý tưởng, AI Studio dựng ra app web (hoặc cả app Android), và bạn có thể thêm tính năng AI qua "AI Chips" — ví dụ tạo ảnh, dùng dữ liệu Google Maps.</p>
+      <ul>
+        <li><strong>Tạo app từ lời nói:</strong> mô tả bằng tiếng Việt/Anh, AI Studio sinh ra ứng dụng chạy được ngay trong trình duyệt.</li>
+        <li><strong>App Android thật:</strong> sinh ứng dụng Android native (Kotlin + Jetpack Compose), xem trước bằng máy ảo Android ngay trong trình duyệt, không cần điện thoại thật.</li>
+        <li><strong>Triển khai một nút bấm:</strong> deploy lên Cloud Run, dùng dịch vụ Firebase, hoặc xuất code dạng ZIP / đẩy lên GitHub để mang sang công cụ khác.</li>
+      </ul>
+      <div class="callout tip">
+        <span class="ic">🔗</span>
+        <div><p><b>Mẹo kết hợp:</b> Dùng AI Studio để dựng nhanh bản mẫu, rồi <em>xuất code</em> và mở trong Antigravity để các agent hoàn thiện, kiểm thử và bảo trì. Xem chi tiết ở trang <a href="compare.html">So sánh &amp; tích hợp</a>.</p></div>
+      </div>
+
+      <h2 id="lich"><span class="num">8</span>Chạy theo lịch &amp; chạy nền</h2>
+      <p>Sức mạnh thật của automation là <strong>việc tự chạy mà không cần bạn ngồi đó</strong>. Hai dạng phổ biến:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dạng</th><th>Mô tả</th><th>Ví dụ</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Theo lịch (scheduled)</strong></td><td>Chạy lặp lại vào thời điểm định sẵn.</td><td>"Mỗi 6h sáng tổng hợp tin tức AI và gửi email cho tôi."</td></tr>
+            <tr><td><strong>Chạy nền (background)</strong></td><td>Giao một việc dài, agent tự làm trong khi bạn làm việc khác.</td><td>"Tái hiện lỗi này, viết test và sửa, xong báo tôi." (Antigravity Manager)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Claude Cowork cho phép <strong>đặt lịch chạy tác vụ tự động</strong> (ví dụ dọn file mỗi thứ Sáu, báo cáo chi tiêu hàng tuần). Antigravity cho phép <strong>điều phối nhiều agent chạy nền</strong> qua Manager Surface. Bạn sẽ làm một ví dụ "bản tin tự động theo lịch" ở trang <a href="projects.html#duan3">Dự án thực hành</a>.</p>
+
+      <h2 id="antoan"><span class="num">9</span>An toàn khi cho agent hành động</h2>
+      <p>Agent càng tự chủ thì càng cần "lan can an toàn". Đây là những nguyên tắc tối thiểu:</p>
+      <div class="grid cols-2">
+        <div class="card"><h4>👀 Yêu cầu duyệt trước hành động nguy hiểm</h4><p>Cấu hình để agent hỏi bạn trước khi xóa file, gửi email ra ngoài, hay chi tiền.</p></div>
+        <div class="card"><h4>🔐 Quyền tối thiểu</h4><p>Chỉ cấp công cụ và thư mục thật sự cần thiết cho nhiệm vụ.</p></div>
+        <div class="card"><h4>🧪 Thử trên dữ liệu giả trước</h4><p>Chạy thử với thư mục/tài khoản thử nghiệm trước khi cho động vào dữ liệu thật.</p></div>
+        <div class="card"><h4>📋 Xem lại "bằng chứng"</h4><p>Đọc Artifacts/log để hiểu agent đã làm gì, nhất là trong vài lần chạy đầu.</p></div>
+      </div>
+      <div class="callout danger">
+        <span class="ic">💳</span>
+        <div><p><b>Tuyệt đối không tự động hóa việc chuyển tiền/giao dịch tài chính.</b> Với các thao tác đặt lệnh, chuyển khoản, thanh toán — hãy luôn để chính bạn bấm nút cuối cùng, không giao toàn quyền cho agent.</p></div>
+      </div>
+
+      <div class="pagenav">
+        <a href="vibecoding.html">
+          <div class="dir">← Trước</div>
+          <div class="lbl">Vibecoding cơ bản</div>
+        </a>
+        <a class="next" href="compare.html">
+          <div class="dir">Tiếp theo →</div>
+          <div class="lbl">So sánh &amp; tích hợp</div>
+        </a>
+      </div>
+
+      <div class="foot">Phần 2 / 4 · Xây agents automation · Tác giả: PhucLB3 x Claude Cowork x Antigravity · <a href="references.html">Xem nguồn tham khảo</a></div>
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

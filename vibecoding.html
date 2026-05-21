@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibecoding cơ bản — Hướng dẫn toàn tập</title>
+<meta name="description" content="Vibecoding là gì, tư duy đúng, cách viết prompt hiệu quả, quy trình tạo phần mềm bằng lời nói và lỗi thường gặp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')})();</script>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="index.html" style="color:inherit">
+      <div class="logo">🚀</div>
+      <div class="title">Vibecoding &amp; AI Agents<span>Hướng dẫn toàn tập</span></div>
+    </a>
+    <nav class="nav">
+      <div class="group-label">Bắt đầu</div>
+      <a href="index.html"><span class="ic">🏠</span> Trang chủ</a>
+      <a href="vibecoding.html"><span class="ic">✨</span> Vibecoding cơ bản</a>
+      <div class="group-label">Đi sâu</div>
+      <a href="agents.html"><span class="ic">🤖</span> Xây agents automation</a>
+      <a href="compare.html"><span class="ic">⚖️</span> So sánh &amp; tích hợp</a>
+      <a href="projects.html"><span class="ic">🛠️</span> Dự án thực hành</a>
+      <div class="group-label">Tra cứu</div>
+      <a href="references.html"><span class="ic">📚</span> Nguồn &amp; tài liệu</a>
+    </nav>
+    <div class="sidebar-footer">
+      <span class="label">Biên soạn</span>
+      PhucLB3 x Claude Cowork x Antigravity
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="topbar">
+      <div class="crumbs"><button class="menu-btn" aria-label="Menu">☰</button> &nbsp; Trang chủ / <b>Vibecoding cơ bản</b></div>
+      <span class="badge">Phần 1</span>
+    </div>
+
+    <div class="container">
+      <section class="hero">
+        <span class="eyebrow">Phần 1 · Nền tảng</span>
+        <h1>Vibecoding cơ bản</h1>
+        <p class="lead">Học cách "trò chuyện" với AI để nó tạo ra phần mềm và làm việc thay bạn — kể cả khi bạn chưa từng viết một dòng code nào.</p>
+      </section>
+
+      <figure class="shot" style="margin-top: 10px; margin-bottom: 40px;">
+        <img src="images/vibecoding_hero.png" alt="Không gian làm việc Vibecoding nghệ thuật">
+        <figcaption><b>Vibecoding:</b> Người dùng đóng vai trò kiến trúc sư đưa ra ý tưởng, AI tự đóng vai trò lập trình viên triển khai và kết nối các khối code.</figcaption>
+      </figure>
+
+      <div class="toc">
+        <div class="toc-title">Nội dung trang này</div>
+        <ol>
+          <li><a href="#la-gi">Vibecoding là gì?</a></li>
+          <li><a href="#tu-duy">Tư duy đúng khi làm việc với AI</a></li>
+          <li><a href="#prompt">Cách viết prompt (lời yêu cầu) hiệu quả</a></li>
+          <li><a href="#quy-trinh">Quy trình vibecoding 6 bước</a></li>
+          <li><a href="#thuat-ngu">Thuật ngữ cần biết, giải thích dễ hiểu</a></li>
+          <li><a href="#loi">Lỗi thường gặp &amp; cách tránh</a></li>
+          <li><a href="#checklist">Checklist cho người mới</a></li>
+        </ol>
+      </div>
+
+      <h2 id="la-gi"><span class="num">1</span>Vibecoding là gì?</h2>
+      <p><strong>Vibecoding</strong> (tạm dịch: "lập trình theo cảm hứng/ý tưởng") là cách tạo ra phần mềm bằng cách <strong>mô tả điều bạn muốn bằng ngôn ngữ tự nhiên</strong>, rồi để AI viết phần code thật sự. Thay vì học cú pháp lập trình, bạn tập trung vào việc <em>diễn đạt rõ ý tưởng</em> và <em>kiểm tra kết quả</em>.</p>
+      <p>Thuật ngữ này được phổ biến đầu năm 2025 và nhanh chóng trở thành cách làm chính thống: ngay cả các công cụ lớn của Google cũng mô tả tính năng của mình là để bạn "vibe code" ra ứng dụng. Hãy hình dung sự khác biệt:</p>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <h4>🧱 Lập trình truyền thống</h4>
+          <p>Bạn phải học ngôn ngữ (Python, JavaScript…), tự gõ từng dòng lệnh, tự sửa lỗi cú pháp. Mất nhiều tháng để làm được thứ đầu tiên hữu ích.</p>
+        </div>
+        <div class="card">
+          <h4>✨ Vibecoding</h4>
+          <p>Bạn nói: <em>"Làm cho tôi một trang ghi chú việc cần làm, có nút thêm và xóa."</em> AI viết code, bạn xem thử, rồi yêu cầu chỉnh sửa bằng lời. Làm được thứ chạy thật trong vài phút.</p>
+        </div>
+      </div>
+
+      <div class="callout note">
+        <span class="ic">🧭</span>
+        <div><p><b>Một cách ví von:</b> Vibecoding giống như thuê một người thợ rất giỏi và rất nhanh. Bạn không cần biết cách cầm búa — nhưng bạn vẫn phải biết <em>mình muốn xây cái gì</em>, mô tả rõ ràng, và kiểm tra xem thợ làm có đúng ý không. AI là người thợ; bạn là kiến trúc sư kiêm người nghiệm thu.</p></div>
+      </div>
+
+      <h3>Vibecoding làm được những gì cho người mới?</h3>
+      <ul>
+        <li><strong>Ứng dụng web nhỏ:</strong> trang ghi chú, máy tính chi tiêu, danh sách việc cần làm, trang giới thiệu bản thân.</li>
+        <li><strong>Công cụ cá nhân:</strong> chuyển đổi đơn vị, đổi định dạng file, sắp xếp dữ liệu trong bảng tính.</li>
+        <li><strong>Tự động hóa việc lặp lại:</strong> đổi tên hàng loạt file, gom email, tạo báo cáo định kỳ (phần này sang chương <a href="agents.html">Agents</a>).</li>
+        <li><strong>Bản mẫu (prototype) ý tưởng:</strong> dựng nhanh một app demo để cho người khác xem trước khi đầu tư nghiêm túc.</li>
+      </ul>
+
+      <h2 id="tu-duy"><span class="num">2</span>Tư duy đúng khi làm việc với AI</h2>
+      <p>Thành công với vibecoding phụ thuộc vào <em>cách bạn tư duy</em> nhiều hơn là công cụ bạn chọn. Bốn nguyên tắc dưới đây là quan trọng nhất.</p>
+
+      <h3>① Bạn là người chỉ đạo, AI là người thực thi</h3>
+      <p>AI rất giỏi tạo ra thứ gì đó, nhưng nó <strong>không đọc được suy nghĩ của bạn</strong>. Nếu yêu cầu mơ hồ, kết quả sẽ mơ hồ. Trách nhiệm mô tả rõ ràng và quyết định "đúng/sai" luôn thuộc về bạn.</p>
+
+      <h3>② Làm việc theo vòng lặp nhỏ</h3>
+      <p>Đừng cố mô tả toàn bộ một ứng dụng phức tạp trong một câu. Hãy làm từng mảnh nhỏ: yêu cầu → xem kết quả → chỉnh sửa → yêu cầu tiếp. Mỗi vòng lặp nên đủ nhỏ để bạn kiểm tra được ngay.</p>
+
+      <div class="callout tip">
+        <span class="ic">🔁</span>
+        <div><p><b>Quy tắc vòng lặp nhỏ:</b> "Một yêu cầu = một thay đổi có thể nhìn thấy." Nếu bạn yêu cầu 10 thứ cùng lúc và có 1 thứ sai, bạn sẽ không biết thứ nào hỏng. Làm từng bước giúp bạn luôn kiểm soát.</p></div>
+      </div>
+
+      <h3>③ Luôn kiểm tra, đừng tin tưởng mù quáng</h3>
+      <p>AI đôi khi "tự tin nói sai" — gọi là <strong>ảo giác (hallucination)</strong>. Nó có thể bịa ra một con số, một hàm không tồn tại, hoặc khẳng định đã làm xong việc mà thực ra chưa. Hãy luôn tự mình xem kết quả: bấm thử nút, đọc lại nội dung, kiểm tra con số.</p>
+
+      <h3>④ Không hiểu thì hỏi lại</h3>
+      <p>Một siêu năng lực của người mới: bạn có thể hỏi AI <em>"giải thích đoạn này cho người không biết lập trình"</em> hoặc <em>"đoạn code này làm gì, có rủi ro gì không?"</em>. Dùng AI vừa để làm, vừa để học.</p>
+
+      <h2 id="prompt"><span class="num">3</span>Cách viết prompt (lời yêu cầu) hiệu quả</h2>
+      <p><strong>Prompt</strong> là phần văn bản bạn gõ cho AI. Chất lượng prompt quyết định chất lượng kết quả. Đây là công thức dễ nhớ, hiệu quả cho hầu hết trường hợp:</p>
+
+      <div class="callout note">
+        <span class="ic">🧩</span>
+        <div><p><b>Công thức C-N-Đ-V:</b> <b>C</b>ontext (bối cảnh) → <b>N</b>hiệm vụ (việc cần làm) → <b>Đ</b>ịnh dạng (kết quả ra sao) → <b>V</b>í dụ (nếu có).</p></div>
+      </div>
+
+      <h4>Ví dụ prompt yếu (kết quả sẽ chung chung):</h4>
+      <div class="codehead"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span> prompt-yeu.txt</div>
+      <pre><code>Làm cho tôi một trang web.</code></pre>
+
+      <h4>Ví dụ prompt tốt (rõ ràng, đủ thông tin):</h4>
+      <div class="codehead"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span> prompt-tot.txt</div>
+      <pre><code>Bối cảnh: Tôi là người mới, không biết lập trình.
+Nhiệm vụ: Tạo một trang web "Quản lý chi tiêu cá nhân" chạy trong trình duyệt.
+Yêu cầu chức năng:
+- Cho phép nhập khoản chi: tên, số tiền (VND), danh mục (ăn uống, đi lại, khác).
+- Hiển thị danh sách các khoản đã nhập và tổng cộng.
+- Có nút xóa từng khoản.
+Định dạng: Giao diện tiếng Việt, đơn giản, màu sắc nhẹ nhàng, dùng được trên điện thoại.
+Lưu ý: Giải thích ngắn gọn cho tôi cách mở và sử dụng sau khi tạo xong.</code></pre>
+
+      <div class="callout tip">
+        <span class="ic">💬</span>
+        <div><p><b>Mẹo vàng:</b> Thêm câu <em>"Tôi là người mới, hãy giải thích cho tôi cách dùng"</em> vào prompt. AI sẽ tự động điều chỉnh để dễ hiểu hơn và hướng dẫn bạn từng bước.</p></div>
+      </div>
+
+      <h3>Bảy kỹ thuật prompt hữu ích</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Kỹ thuật</th><th>Cách làm</th><th>Khi nào dùng</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Nêu rõ vai trò</strong></td><td>"Hãy đóng vai một lập trình viên kiên nhẫn dạy người mới…"</td><td>Khi muốn giọng điệu/cách giải thích phù hợp.</td></tr>
+            <tr><td><strong>Chia nhỏ yêu cầu</strong></td><td>Liệt kê từng chức năng thành gạch đầu dòng.</td><td>Hầu như luôn luôn — giúp AI không bỏ sót.</td></tr>
+            <tr><td><strong>Yêu cầu từng bước</strong></td><td>"Trước tiên hãy lên kế hoạch, đợi tôi đồng ý rồi mới làm."</td><td>Dự án lớn, muốn kiểm soát hướng đi.</td></tr>
+            <tr><td><strong>Cho ví dụ mẫu</strong></td><td>Dán một ví dụ kết quả mong muốn vào prompt.</td><td>Khi định dạng quan trọng (bảng, danh sách…).</td></tr>
+            <tr><td><strong>Đặt ràng buộc</strong></td><td>"Chỉ dùng 1 file HTML, không cần cài đặt gì thêm."</td><td>Khi muốn kết quả đơn giản, dễ chạy.</td></tr>
+            <tr><td><strong>Yêu cầu kiểm tra lại</strong></td><td>"Hãy tự rà soát lỗi trước khi đưa kết quả."</td><td>Để giảm lỗi và thiếu sót.</td></tr>
+            <tr><td><strong>Phản hồi cụ thể</strong></td><td>"Nút xóa chưa chạy. Khi bấm, khoản chi vẫn còn."</td><td>Khi sửa lỗi — mô tả hiện tượng cụ thể.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="quy-trinh"><span class="num">4</span>Quy trình vibecoding 6 bước</h2>
+      <p>Áp dụng quy trình này cho bất kỳ công cụ nào (Claude, Antigravity hay AI Studio). Nó giúp bạn không bị lạc lối.</p>
+
+      <figure class="mock">
+        <span class="shot-tag">Sơ đồ · Vòng lặp vibecoding</span>
+        <svg viewBox="0 0 780 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ vòng lặp vibecoding: mô tả - AI viết - chạy thử - phản hồi">
+          <defs>
+            <marker id="vh" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#b794f6"/></marker>
+          </defs>
+          <rect x="24" y="80" width="150" height="60" rx="12" fill="#131c28" stroke="#6ea8fe"/>
+          <text x="99" y="106" text-anchor="middle" fill="#6ea8fe" font-family="sans-serif" font-size="13" font-weight="800">💬 Mô tả</text>
+          <text x="99" y="125" text-anchor="middle" fill="#aab6c6" font-family="sans-serif" font-size="10">bạn nói muốn gì</text>
+          <path d="M176,110 L222,110" stroke="#b794f6" stroke-width="2" fill="none" marker-end="url(#vh)"/>
+          <rect x="224" y="80" width="150" height="60" rx="12" fill="#131c28" stroke="#56d364"/>
+          <text x="299" y="106" text-anchor="middle" fill="#56d364" font-family="sans-serif" font-size="13" font-weight="800">🤖 AI viết</text>
+          <text x="299" y="125" text-anchor="middle" fill="#aab6c6" font-family="sans-serif" font-size="10">tạo ra phần mềm</text>
+          <path d="M376,110 L422,110" stroke="#b794f6" stroke-width="2" fill="none" marker-end="url(#vh)"/>
+          <rect x="424" y="80" width="150" height="60" rx="12" fill="#131c28" stroke="#f0b429"/>
+          <text x="499" y="106" text-anchor="middle" fill="#f0b429" font-family="sans-serif" font-size="13" font-weight="800">▶️ Chạy thử</text>
+          <text x="499" y="125" text-anchor="middle" fill="#aab6c6" font-family="sans-serif" font-size="10">bạn kiểm tra</text>
+          <path d="M576,110 L622,110" stroke="#b794f6" stroke-width="2" fill="none" marker-end="url(#vh)"/>
+          <rect x="624" y="80" width="132" height="60" rx="12" fill="#131c28" stroke="#f778ba"/>
+          <text x="690" y="106" text-anchor="middle" fill="#f778ba" font-family="sans-serif" font-size="13" font-weight="800">✏️ Phản hồi</text>
+          <text x="690" y="125" text-anchor="middle" fill="#aab6c6" font-family="sans-serif" font-size="10">góp ý chỉnh sửa</text>
+          <!-- loop back -->
+          <path d="M690,140 L690,180 L99,180 L99,142" stroke="#b794f6" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#vh)"/>
+          <text x="394" y="200" text-anchor="middle" fill="#7d8aa0" font-family="sans-serif" font-size="11">↻ lặp vòng nhỏ đến khi ưng ý</text>
+        </svg>
+        <figcaption>Bí quyết là <b>làm từng vòng nhỏ</b>: mỗi yêu cầu = một thay đổi nhìn thấy được, để luôn kiểm soát kết quả.</figcaption>
+      </figure>
+
+      <ol class="steps">
+        <li><span class="st-title">Mô tả ý tưởng bằng một câu</span> Viết ra mục tiêu cuối cùng: "Tôi muốn một app giúp tôi theo dõi thói quen uống nước mỗi ngày." Đây là kim chỉ nam.</li>
+        <li><span class="st-title">Nhờ AI lập kế hoạch trước</span> Yêu cầu: "Hãy đề xuất các chức năng và kế hoạch làm, đừng viết code vội." Bạn duyệt kế hoạch trước khi AI bắt tay.</li>
+        <li><span class="st-title">Làm phiên bản tối giản trước</span> Bắt đầu với phiên bản chạy được đơn giản nhất. Có thể chạy là đã thành công bước đầu, đẹp/đầy đủ tính tiếp sau.</li>
+        <li><span class="st-title">Chạy thử và quan sát</span> Mở kết quả, bấm thử mọi nút, nhập dữ liệu thật. Ghi lại chỗ nào sai hoặc chưa ưng.</li>
+        <li><span class="st-title">Phản hồi để chỉnh sửa</span> Mô tả cụ thể vấn đề. Lặp lại bước 3–5 cho đến khi ưng ý. Đây là phần chiếm nhiều thời gian nhất, và là bình thường.</li>
+        <li><span class="st-title">Lưu lại &amp; chia sẻ</span> Lưu file/dự án, hoặc triển khai lên mạng (AI Studio có nút deploy). Ghi chú lại prompt đã dùng để lần sau tái sử dụng.</li>
+      </ol>
+
+      <div class="callout warn">
+        <span class="ic">⚠️</span>
+        <div><p><b>Đừng bỏ qua bước 4 (chạy thử).</b> Lỗi phổ biến nhất của người mới là tin rằng "AI nói xong rồi nghĩa là xong". Luôn tự kiểm chứng bằng mắt và bằng tay.</p></div>
+      </div>
+
+      <h2 id="thuat-ngu"><span class="num">5</span>Thuật ngữ cần biết, giải thích dễ hiểu</h2>
+      <p>Bạn sẽ gặp những từ này thường xuyên. Đây là cách hiểu nhanh, không cần nền tảng kỹ thuật.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Thuật ngữ</th><th>Hiểu nôm na</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Prompt</strong></td><td>Lời yêu cầu/câu lệnh bạn gõ cho AI.</td></tr>
+            <tr><td><strong>Model (mô hình)</strong></td><td>"Bộ não" AI cụ thể, ví dụ Claude Opus, Gemini 3 Pro. Mô hình mạnh hơn = thông minh hơn nhưng có thể chậm/đắt hơn.</td></tr>
+            <tr><td><strong>Token</strong></td><td>Đơn vị đếm chữ mà AI xử lý. Prompt và câu trả lời càng dài thì càng tốn token (liên quan chi phí).</td></tr>
+            <tr><td><strong>Context (ngữ cảnh)</strong></td><td>Tất cả thông tin AI đang "nhớ" trong cuộc trò chuyện. Khi quá dài, AI có thể quên phần đầu.</td></tr>
+            <tr><td><strong>Hallucination (ảo giác)</strong></td><td>AI tự tin nói ra thông tin sai hoặc bịa đặt. Luôn cần kiểm chứng.</td></tr>
+            <tr><td><strong>IDE</strong></td><td>Phần mềm để viết code. Antigravity là một IDE "có AI" (agentic IDE).</td></tr>
+            <tr><td><strong>Deploy (triển khai)</strong></td><td>Đưa app của bạn lên mạng để người khác truy cập được qua đường link.</td></tr>
+            <tr><td><strong>Repository / repo</strong></td><td>"Kho" chứa toàn bộ file dự án, thường lưu trên GitHub.</td></tr>
+            <tr><td><strong>Agent</strong></td><td>AI không chỉ trả lời mà còn tự <em>hành động</em> nhiều bước để hoàn thành việc. Xem chương <a href="agents.html">Agents</a>.</td></tr>
+            <tr><td><strong>MCP</strong></td><td>"Cổng kết nối" tiêu chuẩn để AI dùng được công cụ và dữ liệu bên ngoài (Gmail, Drive…). Xem chương <a href="agents.html#mcp">Agents</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="loi"><span class="num">6</span>Lỗi thường gặp &amp; cách tránh</h2>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <h4>❌ Yêu cầu quá nhiều cùng lúc</h4>
+          <p><strong>Hậu quả:</strong> kết quả rối, khó tìm chỗ sai.<br><strong>Cách tránh:</strong> tách thành nhiều yêu cầu nhỏ, làm tuần tự.</p>
+        </div>
+        <div class="card">
+          <h4>❌ Không chạy thử, tin AI hoàn toàn</h4>
+          <p><strong>Hậu quả:</strong> app có lỗi mà không biết.<br><strong>Cách tránh:</strong> luôn tự bấm thử, nhập dữ liệu thật.</p>
+        </div>
+        <div class="card">
+          <h4>❌ Phản hồi mơ hồ ("vẫn lỗi")</h4>
+          <p><strong>Hậu quả:</strong> AI sửa sai chỗ, mất thời gian.<br><strong>Cách tránh:</strong> mô tả hiện tượng cụ thể, dán thông báo lỗi nếu có.</p>
+        </div>
+        <div class="card">
+          <h4>❌ Không lưu phiên bản chạy được</h4>
+          <p><strong>Hậu quả:</strong> sửa thêm rồi hỏng, không quay lại được.<br><strong>Cách tránh:</strong> lưu lại bản tốt trước khi thử thay đổi lớn.</p>
+        </div>
+        <div class="card">
+          <h4>❌ Dán dữ liệu nhạy cảm vào AI</h4>
+          <p><strong>Hậu quả:</strong> rò rỉ mật khẩu, thông tin riêng tư.<br><strong>Cách tránh:</strong> không dán mật khẩu, số thẻ, dữ liệu khách hàng thật.</p>
+        </div>
+        <div class="card">
+          <h4>❌ Bỏ cuộc khi gặp lỗi đầu tiên</h4>
+          <p><strong>Hậu quả:</strong> không bao giờ hoàn thành.<br><strong>Cách tránh:</strong> lỗi là bình thường — dán lỗi cho AI và nhờ sửa, lặp lại.</p>
+        </div>
+      </div>
+
+      <div class="callout danger">
+        <span class="ic">🔒</span>
+        <div><p><b>An toàn dữ liệu &amp; bảo mật:</b> Không dán mật khẩu, khóa API thật, thông tin thẻ ngân hàng hay dữ liệu cá nhân của người khác vào prompt. Khi AI tạo app có chứa "khóa bí mật", hãy hỏi nó cách lưu trữ an toàn. Với người mới, hãy ưu tiên các app chỉ chạy cục bộ trong trình duyệt cho tới khi bạn hiểu rõ rủi ro.</p></div>
+      </div>
+
+      <h2 id="checklist"><span class="num">7</span>Checklist cho người mới</h2>
+      <p>In ra hoặc ghi lại danh sách này, dùng mỗi khi bắt đầu một dự án vibecoding:</p>
+      <ul>
+        <li>☐ Tôi đã viết ra mục tiêu cuối cùng bằng một câu.</li>
+        <li>☐ Tôi đã liệt kê các chức năng thành gạch đầu dòng.</li>
+        <li>☐ Tôi nhờ AI lập kế hoạch trước khi viết code.</li>
+        <li>☐ Tôi làm phiên bản tối giản trước, chạy được rồi mới thêm.</li>
+        <li>☐ Tôi đã chạy thử và bấm mọi nút.</li>
+        <li>☐ Khi báo lỗi, tôi mô tả cụ thể hiện tượng.</li>
+        <li>☐ Tôi đã lưu lại bản chạy tốt trước khi thay đổi lớn.</li>
+        <li>☐ Tôi không dán dữ liệu nhạy cảm vào AI.</li>
+      </ul>
+
+      <div class="callout tip">
+        <span class="ic">🎯</span>
+        <div><p><b>Sẵn sàng thực hành?</b> Sang trang <a href="projects.html">Dự án thực hành</a> để làm app đầu tiên của bạn trong Google AI Studio — hoặc đọc tiếp <a href="agents.html">Xây agents automation</a> để cho AI tự làm việc nhiều bước.</p></div>
+      </div>
+
+      <div class="pagenav">
+        <a href="index.html">
+          <div class="dir">← Trước</div>
+          <div class="lbl">Trang chủ</div>
+        </a>
+        <a class="next" href="agents.html">
+          <div class="dir">Tiếp theo →</div>
+          <div class="lbl">Xây agents automation</div>
+        </a>
+      </div>
+
+      <div class="foot">Phần 1 / 4 · Vibecoding cơ bản · Tác giả: PhucLB3 x Claude Cowork x Antigravity · <a href="references.html">Xem nguồn tham khảo</a></div>
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

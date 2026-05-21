@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>So sánh & tích hợp — Hướng dẫn toàn tập</title>
+<meta name="description" content="So sánh Claude, Google Antigravity và Google AI Studio: khi nào dùng cái nào và cách phối hợp chúng.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')})();</script>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="index.html" style="color:inherit">
+      <div class="logo">🚀</div>
+      <div class="title">Vibecoding &amp; AI Agents<span>Hướng dẫn toàn tập</span></div>
+    </a>
+    <nav class="nav">
+      <div class="group-label">Bắt đầu</div>
+      <a href="index.html"><span class="ic">🏠</span> Trang chủ</a>
+      <a href="vibecoding.html"><span class="ic">✨</span> Vibecoding cơ bản</a>
+      <div class="group-label">Đi sâu</div>
+      <a href="agents.html"><span class="ic">🤖</span> Xây agents automation</a>
+      <a href="compare.html"><span class="ic">⚖️</span> So sánh &amp; tích hợp</a>
+      <a href="projects.html"><span class="ic">🛠️</span> Dự án thực hành</a>
+      <div class="group-label">Tra cứu</div>
+      <a href="references.html"><span class="ic">📚</span> Nguồn &amp; tài liệu</a>
+    </nav>
+    <div class="sidebar-footer">
+      <span class="label">Biên soạn</span>
+      PhucLB3 x Claude Cowork x Antigravity
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="topbar">
+      <div class="crumbs"><button class="menu-btn" aria-label="Menu">☰</button> &nbsp; Trang chủ / <b>So sánh &amp; tích hợp</b></div>
+      <span class="badge">Phần 3</span>
+    </div>
+
+    <div class="container">
+      <section class="hero">
+        <span class="eyebrow">Phần 3 · Chọn &amp; phối hợp</span>
+        <h1>So sánh &amp; tích hợp công cụ</h1>
+        <p class="lead">Ba công cụ, ba thế mạnh khác nhau. Trang này giúp bạn chọn đúng công cụ cho từng việc và phối hợp chúng thành một quy trình làm việc liền mạch.</p>
+      </section>
+
+      <div class="toc">
+        <div class="toc-title">Nội dung trang này</div>
+        <ol>
+          <li><a href="#bang">Bảng so sánh tổng quan</a></li>
+          <li><a href="#khinaodung">Khi nào dùng cái nào?</a></li>
+          <li><a href="#diem-manh">Điểm mạnh &amp; hạn chế của từng công cụ</a></li>
+          <li><a href="#tichhop">Cách phối hợp ba công cụ</a></li>
+          <li><a href="#quytrinh">Quy trình mẫu end-to-end</a></li>
+        </ol>
+      </div>
+
+      <h2 id="bang"><span class="num">1</span>Bảng so sánh tổng quan</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Tiêu chí</th><th>🤖 Claude</th><th>🪐 Antigravity</th><th>🧪 AI Studio</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Nhà phát triển</strong></td><td>Anthropic</td><td>Google</td><td>Google</td></tr>
+            <tr><td><strong>Bản chất</strong></td><td>Trợ lý AI + nền tảng agent (Cowork, Code, SDK)</td><td>IDE agentic — phòng làm việc cho agent</td><td>Web để "vibe code" ra app</td></tr>
+            <tr><td><strong>Hợp nhất với</strong></td><td>Tự động hóa công việc, agent nhiều bước, làm việc với file/ứng dụng</td><td>Dự án phần mềm thật, agent tự kiểm thử trên trình duyệt</td><td>Dựng nhanh app web/Android, prototype ý tưởng</td></tr>
+            <tr><td><strong>Người mới dễ bắt đầu?</strong></td><td>Rất dễ với Cowork</td><td>Trung bình (là IDE)</td><td>Rất dễ (chỉ cần trình duyệt)</td></tr>
+            <tr><td><strong>Tự kiểm thử trình duyệt</strong></td><td>Có (computer use / Chrome)</td><td>Có (điểm mạnh nổi bật)</td><td>Xem trước trong trình duyệt</td></tr>
+            <tr><td><strong>Chạy theo lịch / nền</strong></td><td>Có (Cowork scheduled tasks)</td><td>Có (Manager, nhiều agent song song)</td><td>Hạn chế</td></tr>
+            <tr><td><strong>Triển khai lên mạng</strong></td><td>Qua code/connectors</td><td>Qua quy trình dev</td><td>Một nút (Cloud Run, Firebase)</td></tr>
+            <tr><td><strong>Kết nối ứng dụng ngoài</strong></td><td>Mạnh (MCP, 50+ connectors)</td><td>Có (MCP, trình duyệt)</td><td>AI Chips, tích hợp Google</td></tr>
+            <tr><td><strong>Model dùng được</strong></td><td>Claude (Opus/Sonnet/Haiku)</td><td>Gemini 3 Pro, Claude Sonnet 4.5, GPT-OSS</td><td>Gemini</td></tr>
+            <tr><td><strong>Chi phí bắt đầu</strong></td><td>Có gói miễn phí; agent nâng cao cần trả phí</td><td>Miễn phí (giai đoạn xem trước)</td><td>Miễn phí để bắt đầu</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn">
+        <span class="ic">📌</span>
+        <div><p>Thông tin chi phí/model thay đổi nhanh và tùy khu vực. Số liệu trong bảng đúng tại thời điểm <b>tháng 5/2026</b>; hãy kiểm tra <a href="references.html">trang chính thức</a> trước khi quyết định.</p></div>
+      </div>
+
+      <h2 id="khinaodung"><span class="num">2</span>Khi nào dùng cái nào?</h2>
+      <p>Cách nhanh nhất để chọn: hỏi "mục tiêu của tôi là gì?"</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="ic-lg">🧪</div>
+          <h4>Tôi muốn dựng nhanh một app demo</h4>
+          <p>→ <strong>Google AI Studio.</strong> Mô tả ý tưởng, có app chạy trong trình duyệt sau vài phút, deploy một nút.</p>
+        </div>
+        <div class="card">
+          <div class="ic-lg">🪐</div>
+          <h4>Tôi làm dự án phần mềm nghiêm túc</h4>
+          <p>→ <strong>Antigravity.</strong> Giao việc cho agent, để nó tự viết, tự chạy thử trên trình duyệt và báo cáo bằng Artifacts.</p>
+        </div>
+        <div class="card">
+          <div class="ic-lg">🤖</div>
+          <h4>Tôi muốn tự động hóa việc văn phòng</h4>
+          <p>→ <strong>Claude Cowork.</strong> Dọn file, làm báo cáo, xử lý email, chạy theo lịch — trên chính máy của bạn.</p>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <span class="ic">🧭</span>
+        <div><p><b>Quy tắc 80/20 cho người mới:</b> Bắt đầu mọi thứ ở <b>AI Studio</b> (dễ thấy kết quả nhất). Khi cần tự động hóa công việc lặp lại trên máy, chuyển sang <b>Claude Cowork</b>. Khi dự án đủ lớn để cần kiểm thử và bảo trì bài bản, mở <b>Antigravity</b>.</p></div>
+      </div>
+
+      <h2 id="diem-manh"><span class="num">3</span>Điểm mạnh &amp; hạn chế</h2>
+
+      <h3>🤖 Claude</h3>
+      <p><strong>Mạnh:</strong> suy luận sâu, viết và phân tích tốt, hệ sinh thái agent trưởng thành (Cowork dễ dùng cho người mới, Code &amp; SDK cho chuyên sâu), kết nối ứng dụng phong phú qua MCP, đặt lịch chạy tự động, làm việc trực tiếp với file và ứng dụng trên máy bạn.</p>
+      <p><strong>Hạn chế:</strong> tính năng agent nâng cao thường cần gói trả phí; chỉ dùng các model của Claude (không đa model như Antigravity).</p>
+
+      <h3>🪐 Google Antigravity</h3>
+      <p><strong>Mạnh:</strong> thiết kế "agent-first" thực thụ, tự kiểm thử trên trình duyệt, Artifacts giúp người mới hiểu agent đang làm gì, điều phối nhiều agent song song, cho chọn nhiều model (Gemini 3 Pro, Claude Sonnet 4.5, GPT-OSS), miễn phí trong giai đoạn xem trước.</p>
+      <p><strong>Hạn chế:</strong> là một IDE nên ban đầu hơi "nhiều thứ" với người chưa quen; còn ở giai đoạn xem trước nên có thể thay đổi, và "miễn phí, hiện tại" — Google đã ám chỉ sẽ có gói trả phí về sau.</p>
+
+      <h3>🧪 Google AI Studio</h3>
+      <p><strong>Mạnh:</strong> dễ tiếp cận nhất (chỉ cần trình duyệt + tài khoản Google), tạo app web và cả app Android từ lời nói, deploy một nút lên Cloud Run/Firebase, xuất code sang công cụ khác.</p>
+      <p><strong>Hạn chế:</strong> nghiêng về tạo app hơn là agent chạy nền/theo lịch; phù hợp prototype và app vừa phải hơn là hệ thống phức tạp.</p>
+
+      <h2 id="tichhop"><span class="num">4</span>Cách phối hợp ba công cụ</h2>
+      <p>Bạn không phải chọn <em>một</em> công cụ. Sức mạnh thật đến khi phối hợp chúng — mỗi công cụ làm phần nó giỏi nhất.</p>
+
+      <div class="callout note">
+        <span class="ic">🔗</span>
+        <div><p><b>Cầu nối quan trọng: xuất/nhập code.</b> AI Studio cho <em>xuất ZIP</em> hoặc <em>đẩy lên GitHub</em>. Antigravity và Claude Code đều mở được dự án từ thư mục/GitHub. Đây là "đường ray" để chuyển công việc giữa các công cụ mà không mất gì.</p></div>
+      </div>
+
+      <h3>Ba kiểu phối hợp phổ biến</h3>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4>🧪 → 🪐 Prototype rồi hoàn thiện</h4>
+          <p>Dựng bản mẫu nhanh ở <strong>AI Studio</strong>, xuất code, mở trong <strong>Antigravity</strong> để agent kiểm thử, sửa lỗi và bổ sung tính năng bài bản.</p>
+        </div>
+        <div class="card">
+          <h4>🪐 → 🤖 Code rồi tự động hóa vận hành</h4>
+          <p>Xây công cụ trong <strong>Antigravity</strong>, sau đó dùng <strong>Claude Cowork</strong> đặt lịch chạy công cụ đó định kỳ và xử lý kết quả (gửi báo cáo, cập nhật bảng tính).</p>
+        </div>
+        <div class="card">
+          <h4>🤖 ↔ 🪐 Cùng "bộ não" Claude</h4>
+          <p>Cả Antigravity và Claude đều dùng được model <strong>Claude</strong>. Bạn có chất lượng suy luận quen thuộc trên cả hai nền tảng, dễ chuyển qua lại.</p>
+        </div>
+        <div class="card">
+          <h4>🧪 → 🤖 App + trợ lý dữ liệu</h4>
+          <p>App nhập liệu dựng bằng <strong>AI Studio</strong>; <strong>Claude Cowork</strong> định kỳ tổng hợp dữ liệu thành báo cáo, slide, email.</p>
+        </div>
+      </div>
+
+      <h2 id="quytrinh"><span class="num">5</span>Quy trình mẫu end-to-end</h2>
+      <p>Ví dụ: bạn muốn làm một <strong>công cụ theo dõi chi tiêu</strong> rồi tự động báo cáo hàng tuần.</p>
+      <ol class="steps">
+        <li><span class="st-title">Ý tưởng &amp; bản mẫu — AI Studio</span> Mô tả app theo dõi chi tiêu, AI Studio dựng app web chạy được. Bạn thử nhập vài khoản chi, chỉnh giao diện bằng lời.</li>
+        <li><span class="st-title">Xuất code</span> Bấm xuất ZIP hoặc đẩy lên GitHub để mang sang công cụ mạnh hơn.</li>
+        <li><span class="st-title">Hoàn thiện &amp; kiểm thử — Antigravity</span> Mở dự án, giao agent: "Thêm biểu đồ chi tiêu theo tháng, tự kiểm thử trên trình duyệt, chụp màn hình cho tôi." Duyệt Artifacts.</li>
+        <li><span class="st-title">Tự động hóa báo cáo — Claude Cowork</span> Đặt lịch: "Mỗi Chủ nhật, đọc dữ liệu chi tiêu, tạo báo cáo tuần dạng bảng tính và gửi email cho tôi."</li>
+        <li><span class="st-title">Vận hành &amp; cải tiến</span> Mỗi tuần nhận báo cáo tự động. Khi cần đổi tính năng, quay lại Antigravity; cần đổi lịch/định dạng báo cáo, chỉnh trong Cowork.</li>
+      </ol>
+
+      <div class="callout tip">
+        <span class="ic">🎯</span>
+        <div><p>Đây chính là tinh thần của tài liệu: <b>vibecoding</b> để tạo ra phần mềm, <b>agents</b> để vận hành nó tự động. Sang trang <a href="projects.html">Dự án thực hành</a> để làm theo từng bước cụ thể.</p></div>
+      </div>
+
+      <div class="pagenav">
+        <a href="agents.html">
+          <div class="dir">← Trước</div>
+          <div class="lbl">Xây agents automation</div>
+        </a>
+        <a class="next" href="projects.html">
+          <div class="dir">Tiếp theo →</div>
+          <div class="lbl">Dự án thực hành</div>
+        </a>
+      </div>
+
+      <div class="foot">Phần 3 / 4 · So sánh &amp; tích hợp · Tác giả: PhucLB3 x Claude Cowork x Antigravity · <a href="references.html">Xem nguồn tham khảo</a></div>
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

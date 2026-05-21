@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dự án thực hành — Hướng dẫn toàn tập</title>
+<meta name="description" content="Bốn dự án thực hành làm theo từng bước: app web đầu tiên, agent dọn thư mục, bản tin tự động theo lịch, app Android từ một câu mô tả.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')})();</script>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="index.html" style="color:inherit">
+      <div class="logo">🚀</div>
+      <div class="title">Vibecoding &amp; AI Agents<span>Hướng dẫn toàn tập</span></div>
+    </a>
+    <nav class="nav">
+      <div class="group-label">Bắt đầu</div>
+      <a href="index.html"><span class="ic">🏠</span> Trang chủ</a>
+      <a href="vibecoding.html"><span class="ic">✨</span> Vibecoding cơ bản</a>
+      <div class="group-label">Đi sâu</div>
+      <a href="agents.html"><span class="ic">🤖</span> Xây agents automation</a>
+      <a href="compare.html"><span class="ic">⚖️</span> So sánh &amp; tích hợp</a>
+      <a href="projects.html"><span class="ic">🛠️</span> Dự án thực hành</a>
+      <div class="group-label">Tra cứu</div>
+      <a href="references.html"><span class="ic">📚</span> Nguồn &amp; tài liệu</a>
+    </nav>
+    <div class="sidebar-footer">
+      <span class="label">Biên soạn</span>
+      PhucLB3 x Claude Cowork x Antigravity
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="topbar">
+      <div class="crumbs"><button class="menu-btn" aria-label="Menu">☰</button> &nbsp; Trang chủ / <b>Dự án thực hành</b></div>
+      <span class="badge">Phần 4</span>
+    </div>
+
+    <div class="container">
+      <section class="hero">
+        <span class="eyebrow">Phần 4 · Bắt tay làm</span>
+        <h1>Dự án thực hành</h1>
+        <p class="lead">Bốn dự án tăng dần độ khó, làm theo từng bước. Mỗi dự án có sẵn prompt mẫu để bạn sao chép và dùng ngay.</p>
+      </section>
+
+      <div class="toc">
+        <div class="toc-title">Bốn dự án</div>
+        <ol>
+          <li><a href="#duan1">Dự án 1 — App web đầu tiên (AI Studio) · Dễ</a></li>
+          <li><a href="#duan2">Dự án 2 — Agent dọn thư mục (Claude Cowork) · Dễ</a></li>
+          <li><a href="#duan3">Dự án 3 — Bản tin tự động theo lịch · Trung bình</a></li>
+          <li><a href="#duan4">Dự án 4 — App Android từ một câu (AI Studio) + hoàn thiện (Antigravity) · Trung bình</a></li>
+        </ol>
+      </div>
+
+      <div class="callout note">
+        <span class="ic">📋</span>
+        <div><p><b>Cách dùng trang này:</b> Mỗi dự án có khối <span class="pill">prompt mẫu</span> — bạn sao chép, dán vào công cụ tương ứng, rồi tinh chỉnh theo nhu cầu. Nhớ áp dụng <a href="vibecoding.html#quy-trinh">quy trình 6 bước</a> và <a href="vibecoding.html#checklist">checklist</a> đã học.</p></div>
+      </div>
+
+      <!-- DỰ ÁN 1 -->
+      <h2 id="duan1"><span class="num">1</span>App web đầu tiên — Danh sách việc cần làm</h2>
+      <p><span class="pill green">Độ khó: Dễ</span> <span class="pill accent">Công cụ: Google AI Studio</span> <span class="pill">⏱️ ~15 phút</span></p>
+      <p><strong>Mục tiêu:</strong> Tạo một app web "to-do list" chạy được trong trình duyệt, để bạn cảm nhận "phép màu" vibecoding lần đầu.</p>
+
+      <figure class="shot">
+        <span class="shot-tag">Giao diện dự kiến · Danh sách việc cần làm</span>
+        <img loading="lazy" src="images/project1_todo.png" alt="Giao diện App web Danh sách việc cần làm">
+        <figcaption>
+          **Giao diện To-Do List mong muốn**: Thiết kế tối giản, tông màu xanh ngọc nhạt mát mắt, hiển thị danh sách công việc trực quan, nút thêm/xóa việc rõ ràng.
+        </figcaption>
+      </figure>
+
+      <div class="callout note">
+        <span class="ic">🖼️</span>
+        <div><p><b>Xem giao diện thật:</b> Đăng nhập <a href="https://aistudio.google.com/apps" target="_blank" rel="noopener">aistudio.google.com/apps</a> để thấy Build mode thực tế, hoặc xem ảnh &amp; hướng dẫn chính thức trong <a href="https://ai.google.dev/gemini-api/docs/aistudio-build-mode" target="_blank" rel="noopener">tài liệu Google AI Studio</a>.</p></div>
+      </div>
+
+      <ol class="steps">
+        <li><span class="st-title">Mở AI Studio &amp; vào Build mode</span> Truy cập <code>aistudio.google.com</code>, đăng nhập bằng tài khoản Google, chọn chế độ <strong>Build</strong>.</li>
+        <li><span class="st-title">Dán prompt mẫu</span> Sao chép prompt bên dưới vào ô mô tả và chạy.</li>
+        <li><span class="st-title">Xem trước &amp; thử</span> AI Studio hiện app ngay trong trình duyệt. Thêm vài việc, đánh dấu hoàn thành, xóa thử.</li>
+        <li><span class="st-title">Chỉnh sửa bằng lời</span> Dùng khung chat để yêu cầu thay đổi (đổi màu, thêm chức năng). Lặp lại đến khi ưng.</li>
+        <li><span class="st-title">Lưu / triển khai</span> Xuất code (ZIP/GitHub) hoặc deploy một nút để có link chia sẻ.</li>
+      </ol>
+
+      <div class="codehead"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span> prompt mẫu — Dự án 1</div>
+      <pre><code>Bối cảnh: Tôi là người mới, chưa biết lập trình.
+Nhiệm vụ: Tạo một ứng dụng web "Danh sách việc cần làm" chạy trong trình duyệt.
+Chức năng:
+- Ô nhập việc mới và nút "Thêm".
+- Mỗi việc có ô đánh dấu hoàn thành (gạch ngang khi xong) và nút xóa.
+- Hiển thị số việc còn lại ở dưới.
+- Dữ liệu giữ lại khi tải lại trang.
+Giao diện: tiếng Việt, gọn gàng, dùng tốt trên điện thoại, màu xanh dịu.
+Sau khi tạo xong: giải thích ngắn gọn cho tôi cách dùng và cách lưu lại.</code></pre>
+
+      <div class="callout tip">
+        <span class="ic">🚀</span>
+        <div><p><b>Thử thách thêm:</b> Sau khi chạy, yêu cầu: <em>"Thêm chức năng phân loại việc theo nhãn (công việc / cá nhân) và lọc theo nhãn."</em> Đây là bài tập tốt cho kỹ năng "vòng lặp nhỏ".</p></div>
+      </div>
+
+      <hr>
+
+      <!-- DỰ ÁN 2 -->
+      <h2 id="duan2"><span class="num">2</span>Agent dọn thư mục Downloads</h2>
+      <p><span class="pill green">Độ khó: Dễ</span> <span class="pill accent">Công cụ: Claude Cowork</span> <span class="pill">⏱️ ~10 phút</span></p>
+      <p><strong>Mục tiêu:</strong> Để một agent tự sắp xếp thư mục lộn xộn trên máy bạn — ví dụ thực tế đầu tiên về automation.</p>
+
+      <figure class="shot">
+        <span class="shot-tag">Minh họa ý tưởng · Agent dọn dẹp</span>
+        <img loading="lazy" src="images/project2_cleanup.png" alt="Minh hoạ Robot AI dọn dẹp phân loại file">
+        <figcaption>
+          **Quy trình dọn dẹp thông minh**: Agent sẽ quét các tệp tin lộn xộn ở thư mục Downloads và phân loại gọn gàng vào các ngăn theo định dạng file phù hợp.
+        </figcaption>
+      </figure>
+
+      <div class="callout warn">
+        <span class="ic">⚠️</span>
+        <div><p><b>Trước khi bắt đầu:</b> Hãy thử trên một <em>thư mục bản sao</em> hoặc thư mục thử nghiệm. Yêu cầu agent <em>hỏi trước khi xóa</em>. Không bao giờ để agent xóa file ở lần chạy đầu mà chưa xem nó định làm gì.</p></div>
+      </div>
+
+      <ol class="steps">
+        <li><span class="st-title">Mở Claude Cowork &amp; chọn thư mục</span> Cấp cho Cowork quyền truy cập đúng thư mục bạn muốn dọn (ví dụ một thư mục thử nghiệm).</li>
+        <li><span class="st-title">Giao nhiệm vụ</span> Dán prompt mẫu bên dưới.</li>
+        <li><span class="st-title">Xem kế hoạch</span> Cowork sẽ trình bày nó định làm gì. Đọc kỹ trước khi đồng ý.</li>
+        <li><span class="st-title">Duyệt &amp; chạy</span> Cho phép thực hiện. Kiểm tra kết quả: các file đã vào đúng nhóm chưa.</li>
+        <li><span class="st-title">(Tùy chọn) Đặt lịch lặp lại</span> Yêu cầu Cowork chạy việc này tự động mỗi thứ Sáu.</li>
+      </ol>
+
+      <div class="codehead"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span> prompt mẫu — Dự án 2</div>
+      <pre><code>Hãy sắp xếp thư mục tôi vừa chọn cho bạn:
+- Tạo các thư mục con theo loại: HinhAnh, TaiLieu, BangTinh, Nen/Zip, Khac.
+- Di chuyển từng file vào thư mục con phù hợp dựa trên đuôi file.
+- KHÔNG xóa bất kỳ file nào. Nếu thấy file trùng hoặc rất cũ,
+  hãy liệt kê ra và HỎI tôi trước, đừng tự xóa.
+- Cuối cùng, đưa cho tôi một bảng tóm tắt: mỗi nhóm có bao nhiêu file.
+Trình bày kế hoạch trước, đợi tôi đồng ý rồi mới thực hiện.</code></pre>
+
+      <div class="callout tip">
+        <span class="ic">📅</span>
+        <div><p><b>Biến thành thói quen:</b> Sau khi chạy ổn, nói với Cowork: <em>"Chạy đúng việc dọn thư mục này tự động vào 17h mỗi thứ Sáu hằng tuần."</em> Cowork hỗ trợ đặt lịch tác vụ tự động.</p></div>
+      </div>
+
+      <hr>
+
+      <!-- DỰ ÁN 3 -->
+      <h2 id="duan3"><span class="num">3</span>Bản tin tự động theo lịch</h2>
+      <p><span class="pill orange" style="color:var(--orange);border-color:#5c4a1f">Độ khó: Trung bình</span> <span class="pill accent">Công cụ: Claude Cowork</span> <span class="pill">⏱️ ~20 phút</span></p>
+      <p><strong>Mục tiêu:</strong> Một agent tự tổng hợp tin tức theo chủ đề bạn quan tâm và gửi cho bạn mỗi sáng — ví dụ kinh điển về agent chạy theo lịch.</p>
+
+      <figure class="shot">
+        <span class="shot-tag">Giao diện dự kiến · Bản tin AI tự động</span>
+        <img loading="lazy" src="images/project3_newsletter.png" alt="Giao diện bản tin AI tự động thiết kế đẹp">
+        <figcaption>
+          **Bản tin AI tự động cao cấp**: Tin tức nổi bật trong ngày được agent tự động quét, tóm tắt bằng tiếng Việt và sắp xếp vào giao diện đọc tin tức sang trọng, dễ đọc.
+        </figcaption>
+      </figure>
+
+      <ol class="steps">
+        <li><span class="st-title">Xác định chủ đề &amp; đầu ra</span> Quyết định chủ đề (vd: "tin AI") và định dạng (vd: file HTML đẹp, hoặc email).</li>
+        <li><span class="st-title">Chạy thử một lần (thủ công)</span> Dán prompt mẫu, để Cowork tạo bản tin một lần. Kiểm tra chất lượng, độ chính xác, link.</li>
+        <li><span class="st-title">Tinh chỉnh</span> Góp ý: số lượng tin, độ dài tóm tắt, nguồn ưu tiên, ngôn ngữ.</li>
+        <li><span class="st-title">Đặt lịch tự động</span> Yêu cầu chạy mỗi sáng 6h và gửi cho bạn.</li>
+        <li><span class="st-title">Theo dõi &amp; cải thiện</span> Vài ngày đầu xem kết quả mỗi sáng, chỉnh prompt nếu cần.</li>
+      </ol>
+
+      <div class="codehead"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span> prompt mẫu — Dự án 3</div>
+      <pre><code>Hãy làm cho tôi một bản tin AI hằng ngày:
+- Tìm 8–10 tin tức AI mới và đáng chú ý nhất từ các nguồn uy tín.
+- Với mỗi tin: tiêu đề, tóm tắt ~120 chữ bằng tiếng Việt, và link nguồn gốc.
+- Tổng hợp vào một file HTML trình bày đẹp, dễ đọc trên điện thoại.
+- Kiểm tra lại các link còn hoạt động trước khi đưa cho tôi.
+Chạy thử một lần ngay bây giờ để tôi xem trước.</code></pre>
+
+      <div class="callout note">
+        <span class="ic">⏰</span>
+        <div><p>Sau khi ưng, đặt lịch: <em>"Từ mai, chạy đúng quy trình bản tin AI này vào 6h sáng mỗi ngày và gửi file cho tôi."</em> Đây là lúc bạn biến một việc thủ công thành một agent thật sự tự động.</p></div>
+      </div>
+
+      <div class="callout tip">
+        <span class="ic">🧩</span>
+        <div><p><b>Liên hệ thực tế:</b> Đây chính là kiểu quy trình mà các "skill/plugin" đóng gói sẵn — ví dụ một pipeline gồm: viết bản tin → kiểm tra link → kiểm tra ảnh → gửi email, chạy chỉ bằng một lệnh. Khi quen, bạn có thể đóng gói quy trình của mình để tái dùng.</p></div>
+      </div>
+
+      <hr>
+
+      <!-- DỰ ÁN 4 -->
+      <h2 id="duan4"><span class="num">4</span>App Android từ một câu — rồi hoàn thiện</h2>
+      <p><span class="pill orange" style="color:var(--orange);border-color:#5c4a1f">Độ khó: Trung bình</span> <span class="pill accent">AI Studio → Antigravity</span> <span class="pill">⏱️ ~30 phút</span></p>
+      <p><strong>Mục tiêu:</strong> Trải nghiệm tạo app Android <em>thật</em> (không phải web giả dạng) chỉ từ một câu mô tả, sau đó mang sang Antigravity để agent hoàn thiện và kiểm thử.</p>
+
+      <figure class="shot">
+        <span class="shot-tag">Giao diện dự kiến · App uống nước Android</span>
+        <img loading="lazy" src="images/project4_water.png" alt="Giao diện App theo dõi uống nước trên Android">
+        <figcaption>
+          <b>Giao diện ứng dụng theo dõi uống nước:</b> Thiết kế hiện đại với vòng tròn tiến độ gradient xanh nước biển, nút tương tác thêm nước và biểu đồ cột lịch sử trực quan.
+        </figcaption>
+      </figure>
+
+      <ol class="steps">
+        <li><span class="st-title">Tạo app Android trong AI Studio</span> Ở Build mode, dán prompt mẫu. AI Studio sinh app Android native (Kotlin + Jetpack Compose) và chạy trong máy ảo Android ngay trên trình duyệt — không cần điện thoại.</li>
+        <li><span class="st-title">Xem trước trên máy ảo</span> Thử các màn hình, kiểm tra luồng dùng.</li>
+        <li><span class="st-title">Tinh chỉnh bằng lời</span> Yêu cầu thêm màn hình, đổi bố cục, thêm dữ liệu mẫu.</li>
+        <li><span class="st-title">Xuất code &amp; mở trong Antigravity</span> Xuất ZIP hoặc đẩy lên GitHub, rồi mở dự án trong Antigravity.</li>
+        <li><span class="st-title">Giao agent hoàn thiện &amp; kiểm thử</span> Trong Antigravity, để agent rà lỗi, bổ sung tính năng và tạo Artifacts (ảnh chụp, ghi lại thao tác) để bạn duyệt.</li>
+      </ol>
+
+      <div class="codehead"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span> prompt mẫu — Dự án 4 (AI Studio)</div>
+      <pre><code>Tạo một app Android theo dõi thói quen uống nước:
+- Màn hình chính hiển thị số ly nước đã uống hôm nay và mục tiêu (vd 8 ly).
+- Nút "+1 ly" và "-1 ly".
+- Vòng tròn tiến độ thể hiện % so với mục tiêu.
+- Màn hình cài đặt để đổi mục tiêu hằng ngày.
+Giao diện tiếng Việt, hiện đại, nhẹ nhàng. Cho tôi xem trước trên máy ảo.</code></pre>
+
+      <div class="codehead"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span> prompt mẫu — Dự án 4 (Antigravity)</div>
+      <pre><code>Mở dự án app uống nước này. Hãy:
+- Rà soát và sửa các lỗi hiện có.
+- Thêm lịch sử 7 ngày gần nhất dạng biểu đồ cột.
+- Tự chạy thử trên trình duyệt/máy ảo và chụp màn hình các thay đổi.
+- Tổng hợp những gì đã làm vào một Artifact để tôi duyệt.</code></pre>
+
+      <div class="callout tip">
+        <span class="ic">🏁</span>
+        <div><p><b>Hoàn thành 4 dự án</b> nghĩa là bạn đã đi trọn vòng: tạo app (AI Studio), tự động hóa việc (Cowork), agent theo lịch (Cowork), và quy trình phối hợp công cụ (AI Studio → Antigravity). Giờ bạn đủ nền tảng để tự nghĩ ra dự án của riêng mình.</p></div>
+      </div>
+
+      <h2><span class="num">5</span>Tiếp theo nên làm gì?</h2>
+      <ul>
+        <li><strong>Chọn một việc lặp lại trong tuần của bạn</strong> và thử biến nó thành agent Cowork chạy theo lịch.</li>
+        <li><strong>Dựng một công cụ nhỏ giải quyết vấn đề thật của bạn</strong> bằng AI Studio, rồi chia sẻ link cho bạn bè.</li>
+        <li><strong>Tìm hiểu MCP &amp; connectors</strong> để kết nối agent với các ứng dụng bạn đang dùng (xem lại <a href="agents.html#mcp">phần MCP</a>).</li>
+        <li><strong>Đọc tài liệu chính thức</strong> ở <a href="references.html">trang Nguồn</a> khi muốn đào sâu một công cụ cụ thể.</li>
+      </ul>
+
+      <div class="pagenav">
+        <a href="compare.html">
+          <div class="dir">← Trước</div>
+          <div class="lbl">So sánh &amp; tích hợp</div>
+        </a>
+        <a class="next" href="references.html">
+          <div class="dir">Tiếp theo →</div>
+          <div class="lbl">Nguồn &amp; tài liệu</div>
+        </a>
+      </div>
+
+      <div class="foot">Phần 4 / 4 · Dự án thực hành · Tác giả: PhucLB3 x Claude Cowork x Antigravity · <a href="references.html">Xem nguồn tham khảo</a></div>
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
