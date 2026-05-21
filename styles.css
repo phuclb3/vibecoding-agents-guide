@@ -414,3 +414,35 @@ figure.shot img { width: 100%; height: auto; display: block; border-radius: 10px
   .pagenav { flex-direction: column; }
   body { font-size: 16px; }
 }
+
+/* ---------- Sidebar Counter & Pulse Animation ---------- */
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(86, 211, 100, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(86, 211, 100, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(86, 211, 100, 0); }
+}
+.pulse-dot {
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 0 0 rgba(86, 211, 100, 0.4);
+}
+
+.sidebar-counter {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+  font-size: 11px;
+  color: var(--text-soft);
+}
+.sidebar-counter .counter-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.sidebar-counter .counter-label {
+  color: var(--muted);
+}
+.sidebar-counter .counter-val {
+  font-weight: 600;
+  color: var(--text);
+}
+
